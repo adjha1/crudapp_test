@@ -19,6 +19,7 @@ function App() {
     axios.post("http://localhost:5000/items", newItem)
       .then((response) => setItems([...items, response.data]))
       .catch((error) => console.log(error));
+     
   };
 
   // Update an item
@@ -42,10 +43,10 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>CRUD APP</h1>
+    <div style={{border:'5px solid red',padding:'10px', backgroundColor:'pink'}}>
+      <h1 style={{color:'white', backgroundColor:'black',width:'100%',textAlign:"center"}}>CRUD APP</h1>
 
-      <div>
+      <div style={{border:'2px solid red',padding:'10px'}}>
         <h2>Create Item</h2>
         <input
           type="text"
@@ -61,22 +62,26 @@ function App() {
         />
         <button onClick={handleCreate}>Create</button>
       </div>
+      <br/>
 
-      <div>
+      <div style={{border:'2px solid red',padding:'10px'}}>
         <h2>Items List</h2>
-        <ul>
+        <ul >
           {items.map((item) => (
             <li key={item._id}>
               <p>{item.name} - {item.description}</p>
               <button onClick={() => setEditItem(item)}>Edit</button>
               <button onClick={() => handleDelete(item._id)}>Delete</button>
             </li>
+            
           ))}
+        
         </ul>
       </div>
+      <br/>
 
       {editItem && (
-        <div>
+        <div style={{border:'2px solid red',padding:'10px'}}>
           <h2>Edit Item</h2>
           <input
             type="text"

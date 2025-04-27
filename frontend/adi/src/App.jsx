@@ -9,14 +9,14 @@ function App() {
 
   // Fetch all items
   useEffect(() => {
-    axios.get("http://localhost:5000/items")
+    axios.get("https://crud-test-0fb8.onrender.com")
       .then((response) => setItems(response.data))
       .catch((error) => console.log(error));
   }, []);
 
   // Create a new item
   const handleCreate = () => {
-    axios.post("http://localhost:5000/items", newItem)
+    axios.post("https://crud-test-0fb8.onrender.com", newItem)
       .then((response) => setItems([...items, response.data]))
       .catch((error) => console.log(error));
      
@@ -24,7 +24,7 @@ function App() {
 
   // Update an item
   const handleUpdate = () => {
-    axios.put(`http://localhost:5000/items/${editItem._id}`, editItem)
+    axios.put(`https://crud-test-0fb8.onrender.com/${editItem._id}`, editItem)
       .then((response) => {
         const updatedItems = items.map(item =>
           item._id === editItem._id ? response.data : item
@@ -37,7 +37,7 @@ function App() {
 
   // Delete an item
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/items/${id}`)
+    axios.delete(`https://crud-test-0fb8.onrender.com/${id}`)
       .then(() => setItems(items.filter(item => item._id !== id)))
       .catch((error) => console.log(error));
   };
